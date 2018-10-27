@@ -1,8 +1,30 @@
+* [GraphQL schema design patterns](#graphql-schema-design-patterns)
+      * [Argument as query field](#argument-as-query-field)
+         * [Example](#example)
+      * [Argument as formatter](#argument-as-formatter)
+         * [Example](#example-1)
+      * [Interface with multiple implementations](#interface-with-multiple-implementations)
+      * [Generic object with type field](#generic-object-with-type-field)
+         * [Example](#example-2)
+      * [Union with weak interface](#union-with-weak-interface)
+         * [Example](#example-3)
+         * [Discussion](#discussion)
+      * [Any Object (or JSON)](#any-object-or-json)
+      * [Relay pagination](#relay-pagination)
+      * [Object instead of scalar](#object-instead-of-scalar)
+         * [Example:](#example-4)
+      * [Error types](#error-types)
+      * [Top level groups](#top-level-groups)
+         * [Example](#example-5)
+         * [Discussion](#discussion-1)
+
 # GraphQL schema design patterns
+
+A list of GraphQL schema design patterns.
 
 ## Argument as query field
 
-The argument of a field serves as a query parameter to select the field:
+The argument of a field serves as a query parameter to select the field.
 
 ### Example
 The id of an user is used to select the user object
@@ -17,9 +39,9 @@ type User {
 }
 ```
 
-## Argument as formatter for a Scalar
+## Argument as formatter 
 
-The argument of an field serves as a formatter for a Scalar:
+The argument of an field serves as a formatter for a Scalar.
 
 ### Example
 Instead of returning a fixed date format the format argument decides on the returned format.

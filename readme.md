@@ -1,5 +1,5 @@
 * [GraphQL schema design patterns](#graphql-schema-design-patterns)
-      * [Argument as query field](#argument-as-query-field)
+      <!-- * [Argument as query field](#argument-as-query-field)
          * [Example](#example)
       * [Argument as formatter](#argument-as-formatter)
          * [Example](#example-1)
@@ -16,7 +16,7 @@
       * [Error types](#error-types)
       * [Top level groups](#top-level-groups)
          * [Example](#example-5)
-         * [Discussion](#discussion-1)
+         * [Discussion](#discussion-1) -->
 
 # GraphQL schema design patterns
 

@@ -7,19 +7,12 @@ A list of GraphQL schema design patterns.
 1. [Argument as formatter](#argument-as-formatter)
 1. [Interface with multiple implementations](#interface-with-multiple-implementations)
 1. [Generic object with type field](#generic-object-with-type-field)
-    * [Example](#example-2)
 1. [Union with weak interface](#union-with-weak-interface)
-    * [Example](#example-3)
-    * [Discussion](#discussion)
 1. [Any Object (or JSON)](#any-object-or-json)
 1. [Relay pagination](#relay-pagination)
 1. [Object instead of scalar](#object-instead-of-scalar)
-    * [Example](#example-4)
-    * [Discussion](#discussion-1)
 1. [Error types](#error-types)
 1. [Top level groups](#top-level-groups)
-    * [Example](#example-5)
-    * [Discussion](#discussion-2) 
 
 ## Argument as query field
 

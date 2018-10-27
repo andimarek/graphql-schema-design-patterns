@@ -16,11 +16,12 @@ A list of GraphQL schema design patterns.
 * [Any Object (or JSON)](#any-object-or-json)
 * [Relay pagination](#relay-pagination)
 * [Object instead of scalar](#object-instead-of-scalar)
-    * [Example:](#example-4)
+    * [Example](#example-4)
+    * [Discussion](#discussion-1)
 * [Error types](#error-types)
 * [Top level groups](#top-level-groups)
     * [Example](#example-5)
-    * [Discussion](#discussion-1) -->
+    * [Discussion](#discussion-2) 
 
 ## Argument as query field
 
@@ -123,7 +124,7 @@ Using the relay.js way of doing pagination: https://facebook.github.io/relay/gra
 
 Using a object type instead of scalar to be more future proof.
 
-### Example:
+### Example
 Using a complex country type instead of a string.
 
 ``` graphql
@@ -136,6 +137,8 @@ type Country {
   # possible more fields in the future
 }
 ```
+### Discussion
+This allows for further non-breaking changes of the schema on the costs of having more complex queries in the beginning.
 
 ## Error types
 

@@ -1,6 +1,6 @@
 * [GraphQL schema design patterns](#graphql-schema-design-patterns)
-      <!-- * [Argument as query field](#argument-as-query-field)
-         * [Example](#example)
+  * [Argument as query field](#argument-as-query-field)
+    <!--     * [Example](#example)
       * [Argument as formatter](#argument-as-formatter)
          * [Example](#example-1)
       * [Interface with multiple implementations](#interface-with-multiple-implementations)

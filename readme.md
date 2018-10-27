@@ -4,9 +4,7 @@
 A list of GraphQL schema design patterns.
 
 1. [Argument as query field](#argument-as-query-field) 
-  * [Example](#example)
 1. [Argument as formatter](#argument-as-formatter)
-  * [Example](#example-1)
 1. [Interface with multiple implementations](#interface-with-multiple-implementations)
 1. [Generic object with type field](#generic-object-with-type-field)
     * [Example](#example-2)

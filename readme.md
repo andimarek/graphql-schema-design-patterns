@@ -110,12 +110,12 @@ Multiple objects implementing a interface and sharing some fields.
 interface Item {
   title: String
 }
-type Book {
+type Book implements Item{
   title: String
   pageCount: Int
 }
 
-type Movie {
+type Movie implements Item{
   title: String
   director: String
 }
@@ -132,13 +132,14 @@ interface Item {
   # static value for each Item type
   type: String
 }
-type Book {
+
+type Book implements Item{
   title: String
   type: String
   pageCount: Int
 }
 
-type Movie {
+type Movie implements Item{
   title: String
   type: String
   director: String
@@ -184,7 +185,7 @@ One difference to [Interface with multiple implementations](#interface-with-mult
   pageCount
 }
 ```
-This allows for simpler queries without fragments for both types compared.
+This allows for simpler queries without fragments for both types.
 
 
 ## Union with weak interface

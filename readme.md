@@ -215,6 +215,7 @@ type Animals {
 ### Discussion
 
 Especially useful for larger APIs.
+The same pattern is not possible for Mutations, because only the top level mutation fields are guaranteed to be executed sequentially.
 
 ## Specific return type for each Mutation
 

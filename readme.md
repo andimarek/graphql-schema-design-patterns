@@ -5,6 +5,7 @@ A list of GraphQL schema design patterns.
 
 1. [Argument as query field](#argument-as-query-field) 
 1. [Argument as formatter](#argument-as-formatter)
+1. [Different fields for the semantically same value](#different-fields-for-the-semantically-same-value)
 1. [Interface with multiple implementations](#interface-with-multiple-implementations)
 1. [Generic object with type field](#generic-object-with-type-field)
 1. [Union with weak interface](#union-with-weak-interface)
@@ -19,30 +20,83 @@ A list of GraphQL schema design patterns.
 The argument of a field serves as a query parameter to select the field.
 
 ### Example
-The id of an user is used to select the user object
+The id of an user is used to select the user object or a search for multiple users based on the name.
 
 ``` graphql
 type Query {
   user(id: ID): User
+  userSearch(name: String): [User]
 }
 type User {
   id: ID
   ...
 }
 ```
+Or based on 
+
+### Discussion
+
+The argument acts as a query parameter to select one (or more) values.
 
 ## Argument as formatter 
 
-The argument of an field serves as a formatter for a Scalar.
+The argument of an field serves as a formatter.
 
 ### Example
 Instead of returning a fixed date format the format argument decides on the returned format.
 
 ```graphql
 type User {
-  dob(format: String): String
+  dateOfBirth(format: String): String
 }
 ```
+
+It also possible to use this pattern for non Scalars:
+
+```graphql
+type WebPage {
+  content(contentFormat: WebPageFormat): RenderedWebPage   
+}
+enum WebPageFormat {
+  HTML,
+  TEXT
+}
+interface RenderedWebPage {
+  value:String
+}
+type Html implements RenderedWebPage {
+...
+}
+type Text implements RenderedWebPage {
+...
+}
+```
+### Discussion
+The difference to [Argument as query field](#argument-as-query-field) is that the argument doesn't really specify what you want, but rather how you want it. The `content` and the `dateOfBirth` are already selected implicitly by the `User` or `WebPage`, the question is only the format.
+
+## Different fields for the semantically same value
+
+Using different fields for the (semantically) same value.
+
+### Example
+```graphql
+type User {
+  dateOfBirthUTC: String
+  dateOfBirthLocale: String
+}
+
+```
+### Discussion
+
+This is the alternative to [Argument as formatter](#argument-as-formatter) where you can select the format by providing an argument. If both formats are needed as the same time this pattern allows for it directly:
+``` graphql
+...on User {
+  dateOfBirthUTC,
+  dateOfBirthLocal
+}
+```
+while [Argument as formatter](#argument-as-formatter) requires the usage of aliases.
+
 
 ## Interface with multiple implementations
 
@@ -69,6 +123,7 @@ enum ItemType{
 }
 
 ```
+
 
 ## Union with weak interface
 A weak interfaces implemented by a lot of objects and a union type restricting the possible implementations.
@@ -158,4 +213,5 @@ type Animals {
 ```
 ### Discussion
 
+Especially useful for larger APIs.
 

@@ -227,8 +227,8 @@ type Mutation {
   addUser(input: AddUserInput): AddUserInputPayload
 }
 type AddUserInputPayload {
-  addedUser: User
-  mutationID: String
+  user: User
+  clientMutationId: String
 }
 ```
 

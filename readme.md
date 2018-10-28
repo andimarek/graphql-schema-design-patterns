@@ -7,6 +7,7 @@ A list of GraphQL schema design patterns.
 1. [Argument as formatter](#argument-as-formatter)
 1. [Different fields for the semantically same value](#different-fields-for-the-semantically-same-value)
 1. [Interface with multiple implementations](#interface-with-multiple-implementations)
+1. [Explicit type field](#explicit-type-field)
 1. [Generic object with type field](#generic-object-with-type-field)
 1. [Union with weak interface](#union-with-weak-interface)
 1. [Any Object (or JSON)](#any-object-or-json)
@@ -104,6 +105,51 @@ while [Argument as formatter](#argument-as-formatter) requires the usage of alia
 
 Multiple objects implementing a interface and sharing some fields.
 
+### Example
+``` graphql
+interface Item {
+  title: String
+}
+type Book {
+  title: String
+  pageCount: Int
+}
+
+type Movie {
+  title: String
+  director: String
+}
+
+```
+
+## Explicit type field
+Having an explicit type field instead of relying on `__typename`.
+
+### Example
+``` graphql
+interface Item {
+  title: String
+  # static value for each Item type
+  type: String
+}
+type Book {
+  title: String
+  type: String
+  pageCount: Int
+}
+
+type Movie {
+  title: String
+  type: String
+  director: String
+}
+
+```
+
+## Discussion
+Every type name can be queried with the introspection field `__typename`. This is automatically the name of the current object. If for some reason this automatic behavior is not suitable a explicit type field can be added. 
+
+
 ## Generic object with type field
 
 A generic objects which actually represents multiple types. It has a type field to recognize the actual type.
@@ -118,13 +164,27 @@ type Item {
   title: String
   # only available for Movies
   director:String
+  # only available for Books
+  pageCount: Int
 }
-enum ItemType{
+enum ItemType {
   BOOK,
   MOVIE
 }
 
 ```
+
+### Discussion
+One difference to [Interface with multiple implementations](#interface-with-multiple-implementations) is the way it can be queried:
+
+```graphql
+...on Item {
+  title
+  director
+  pageCount
+}
+```
+This allows for simpler queries without fragments for both types compared.
 
 
 ## Union with weak interface

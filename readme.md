@@ -14,6 +14,7 @@ A list of GraphQL schema design patterns.
 1. [Object instead of scalar](#object-instead-of-scalar)
 1. [Error types](#error-types)
 1. [Top level groups](#top-level-groups)
+1. [Specific return type for each Mutation](#specific-return-type-for-each-mutation)
 
 ## Argument as query field
 
@@ -214,4 +215,19 @@ type Animals {
 ### Discussion
 
 Especially useful for larger APIs.
+
+## Specific return type for each Mutation
+
+Each mutation field returns a specific type, just for this Mutation. 
+
+### Example
+```graphql
+type Mutation {
+  addUser(input: AddUserInput): AddUserInputPayload
+}
+type AddUserInputPayload {
+  addedUser: User
+  mutationID: String
+}
+```
 

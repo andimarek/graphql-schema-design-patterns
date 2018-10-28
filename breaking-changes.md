@@ -1,6 +1,8 @@
 List of possible breaking changes in GraphQL:
 (Taken from https://github.com/graphql/graphql-js/blob/0adece9acd6316887f35fc39d141c68c69e2b101/src/utilities/findBreakingChanges.js)
 
+The only allowed type changes are moving from nullable to non-nullable (this includes list of nullable to list of non-nullable etc).
+
 Field removed.
 Field type changed.
 

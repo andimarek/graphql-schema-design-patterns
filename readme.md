@@ -11,7 +11,7 @@ A list of GraphQL schema design patterns.
 1. [Union with weak interface](#union-with-weak-interface)
 1. [Any Object (or JSON)](#any-object-or-json)
 1. [Relay pagination](#relay-pagination)
-1. [Object instead of scalar](#object-instead-of-scalar)
+1. [Wrap scalar in object](#wrap-scalar-in-object)
 1. [Error types](#error-types)
 1. [Top level groups](#top-level-groups)
 1. [Specific return type for each Mutation](#specific-return-type-for-each-mutation)
@@ -168,9 +168,9 @@ Opting out of the GraphQL type system by returning or accepting a general Object
 
 Using the relay.js way of doing pagination: https://facebook.github.io/relay/graphql/connections.htm
 
-## Object instead of scalar 
+## Wrap scalar in object
 
-Using a object type instead of scalar to be more future proof.
+Using a object type to wrap a single scalar value.
 
 ### Example
 Using a complex country type instead of a string.
@@ -187,6 +187,7 @@ type Country {
 ```
 ### Discussion
 This allows for further non-breaking changes of the schema on the costs of having more complex queries in the beginning.
+This is also an alternative to have custom scalars: Instead of having a Country scalar you have Country type. But scalars can be used as input and output types. This means a second `input CountryInput ...` input type is maybe needed.
 
 ## Error types
 

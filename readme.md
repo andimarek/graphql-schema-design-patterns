@@ -133,13 +133,13 @@ interface Item {
   type: String
 }
 
-type Book implements Item{
+type Book implements Item {
   title: String
   type: String
   pageCount: Int
 }
 
-type Movie implements Item{
+type Movie implements Item {
   title: String
   type: String
   director: String

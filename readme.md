@@ -15,6 +15,7 @@ A list of GraphQL schema design patterns.
 1. [Error types](#error-types)
 1. [Top level groups](#top-level-groups)
 1. [Specific return type for each Mutation](#specific-return-type-for-each-mutation)
+1. [One specific input type for each Mutation](#one-specific-input-type-for-each-mutation)
 
 ## Argument as query field
 
@@ -232,3 +233,20 @@ type AddUserInputPayload {
 }
 ```
 
+## One specific input type for each Mutation
+
+Mutation becomes one single input argument. 
+
+### Example
+```graphql
+type Mutation {
+  addUser(input: AddUserInput): AddUserInputPayload
+}
+input AddUserInput {
+  name: String
+  ...
+}
+
+```
+### Discussion
+Related to [Specific return type for each Mutation](#specific-return-type-for-each-mutation), but for the input type.
